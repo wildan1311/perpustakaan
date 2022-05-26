@@ -7,7 +7,7 @@
     <title>Halaman Registrasi Anggota Perpus</title>
 </head>
 <body>
-    <form action="login.php" method="post">
+    <form action="submit_registration_data.php" method="post">
         Nama     : <input type="text" name="nama"><br>
         Password : <input type="password" name="password"><br>
         NRP      : <input type="text" name="nrp"><br>
