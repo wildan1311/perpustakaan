@@ -25,5 +25,5 @@
     $database->exec($insertString);
     $database = null;
 
-    header("Location: login_user.php");
+    header("Location: user_login.php");
 ?>
