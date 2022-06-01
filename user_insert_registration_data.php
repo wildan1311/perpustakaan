@@ -16,14 +16,13 @@
     $nrp = $_POST['nrp'];
     $email = $_POST['email'];
     $alamat = $_POST['alamat'];
-    $kelas = $_POST['kelas'];
-    $angkatan = $_POST['angkatan'];
 
-    $insertString = "INSERT INTO perpustakaan.user(nama , password , nrp , email , alamat , kelas , angkatan)
-        VALUES('$nama' , '$password' , '$nrp' , '$email' , '$alamat' , '$kelas' , '$angkatan')";
+    $insertString = "INSERT INTO perpustakaan.user(id_anggota , nama , email , alamat , password)
+        VALUES('$nrp' , '$nama' , '$email' , '$alamat' ,'$password')";
 
     $database->exec($insertString);
     $database = null;
 
-    header("Location: chose_login.php");
+    header("Location: user_daftar.html");
+    exit;
 ?>
