@@ -13,9 +13,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <?php
-    if(isset($_SESSION)){
-        header("location:formdaftar.php");
-    }
+    // if(isset($_SESSION)){
+    //     header("location:formdaftar.php");
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +49,7 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <?php
-      //@include 'navbar.php';
+      @include 'navbar.php';
     ?>
     <!-- End Navbar -->
     <div class="container-fluid">
@@ -62,37 +62,48 @@
               </div>
             </div> -->
             <div class="card-body px-0 pb-2">
-                <div class="container py-5 h-100 vh-100">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                            <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                            <div class="card-body p-5 text-center">
-                                <form action="form_pinjam.php" method="POST"></form>
-                                <h3 class="mb-5">Judul Buku</h3>
+            <form action="" method="post">
+                <div class="mb-3 ms-5 me-5 col-4">
+                  <label for="id_buku" class="form-label" value="NRP"></label>
+                  <select name="nrp" id="nrp" class="form-select" onchange="ngambil()">
+                    <option value="0">Pilih NRP</option>
+                    <?php
+                      @include 'koneksi.php';
+                      $sql = "SELECT id_anggota from user";
+                      $result = mysqli_query($koneksi, $sql);
+                      $row = mysqli_fetch_all(mysqli_query($koneksi, $sql),MYSQLI_ASSOC);
+    
+                      foreach($row as $row){
+                        echo "<option value='".$row['id_anggota']."' onchange='ngambil()'>".$row['id_anggota']."</option>";
+                      }
 
-                                <div class="form-outline mb-4">
-                                <label class="form-label" for="typeEmailX-2">Email</label>
-                                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                                
-                                </div>
-
-                                <div class="form-outline mb-4">
-                                <label class="form-label" for="typePasswordX-2">Password</label>
-                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                                
-                                </div>
-
-                                <!-- Checkbox -->
-                                <!-- <div class="form-check d-flex justify-content-start mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                                <label class="form-check-label" for="form1Example3"> Remember password </label>
-                                </div> -->
-
-                                <button class="btn btn-primary btn-sm btn-block w-100" type="submit">Login</button>
-                                </form>
-                            </div>
-                    </div>
+                    ?>  
+                  </select>
+                  
                 </div>
+                <div class="mb-3 ms-5 me-5">
+                  <label for="id_buku" class="form-label">Id Buku</label>
+                  <input type="text" class="form-control" id="id_buku" name="id_buku" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3 ms-5 me-5">
+                  <label for="judul" class="form-label">Judul</label>
+                  <input type="text" class="form-control" id="Penerbit" name="judul">
+                </div>
+                <div class="mb-3 ms-5 me-5">
+                  <label for="Pengarang" class="form-label">Pengarang</label>
+                  <input type="text" class="form-control" id="Pengarang" name="Pengarang" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3 ms-5 me-5">
+                  <label for="Penerbit" class="form-label">Penerbit</label>
+                  <input type="text" class="form-control" id="Penerbit" name="Penerbit">
+                </div>
+                <!-- <div class="mb-3 ms-5 me-5 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div> -->
+                <button type="submit" class="btn btn-primary ms-5 me-5 float-end">Submit</button>
+                </div>
+              </form>
             </div>
         </div>
             </div>
@@ -193,5 +204,4 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
 </body>
-
 </html>
