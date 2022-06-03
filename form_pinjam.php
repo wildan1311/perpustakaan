@@ -1,22 +1,3 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v=3.0.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-<?php
-    // if(isset($_SESSION)){
-    //     header("location:formdaftar.php");
-    // }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +9,7 @@
   <title>
     Material Dashboard 2 by Creative Tim
   </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
   <!-- Nucleo Icons -->
@@ -56,60 +38,95 @@
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
-            <!-- <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Tabel Peminjaman</h6>
+                <h6 class="text-white text-capitalize ps-3">Form Peminjaman</h6>
               </div>
-            </div> -->
+            </div>
             <div class="card-body px-0 pb-2">
-            <form action="" method="post">
+            <form id="inputform" method="POST">
                 <div class="mb-3 ms-5 me-5 col-4">
-                  <label for="id_buku" class="form-label" value="NRP"></label>
-                  <select name="nrp" id="nrp" class="form-select" onchange="ngambil()">
-                    <option value="0">Pilih NRP</option>
-                    <?php
-                      @include 'koneksi.php';
-                      $sql = "SELECT id_anggota from user";
-                      $result = mysqli_query($koneksi, $sql);
-                      $row = mysqli_fetch_all(mysqli_query($koneksi, $sql),MYSQLI_ASSOC);
-    
-                      foreach($row as $row){
-                        echo "<option value='".$row['id_anggota']."' onchange='ngambil()'>".$row['id_anggota']."</option>";
-                      }
-
-                    ?>  
-                  </select>
-                  
+                  <label for="id_buku" class="form-label" value="nrp" >Masukkan NRP</label>
+                  <input type="text" class="form-control" name="nrp" id="nrp">
                 </div>
-                <div class="mb-3 ms-5 me-5">
-                  <label for="id_buku" class="form-label">Id Buku</label>
-                  <input type="text" class="form-control" id="id_buku" name="id_buku" aria-describedby="emailHelp" required>
+                  <div class="mb-3 ms-5 me-5 col-4">
+                    <label for="id_buku" class="form-label" value="NRP">Masukkan ID Buku</label>
+                    <input type="text" placeholder="Search id Buku" class="form-control d-inline" name="id_buku">
+                  </div>                
+                <input type="button" class="btn btn-primary ms-5 me-5 float-end" name="submit" onclick="kerjakan()" value="SUBMIT"></input>
+                <!-- <input type="checkbox" id="bismillah"> -->
                 </div>
-                <div class="mb-3 ms-5 me-5">
-                  <label for="judul" class="form-label">Judul</label>
-                  <input type="text" class="form-control" id="Penerbit" name="judul">
-                </div>
-                <div class="mb-3 ms-5 me-5">
-                  <label for="Pengarang" class="form-label">Pengarang</label>
-                  <input type="text" class="form-control" id="Pengarang" name="Pengarang" aria-describedby="emailHelp" required>
-                </div>
-                <div class="mb-3 ms-5 me-5">
-                  <label for="Penerbit" class="form-label">Penerbit</label>
-                  <input type="text" class="form-control" id="Penerbit" name="Penerbit">
-                </div>
-                <!-- <div class="mb-3 ms-5 me-5 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div> -->
-                <button type="submit" class="btn btn-primary ms-5 me-5 float-end">Submit</button>
-                </div>
-              </form>
+            </form>
+              <button class="btn bg-gradient-success w-100 mb-0 toast-btn" style="display: none;" id="success" type="button" data-target="successToast">Success</button>
+              <button class="btn bg-gradient-danger w-100 mb-0 toast-btn" style="display: none;" id="failed" type="button" data-target="dangerToast">Failed</button>
+              <button class="btn bg-gradient-danger w-100 mb-0 toast-btn" style="display: none;" id="bahaya" type="button" data-target="warningToast">Failed</button>
             </div>
         </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- NOTIF -->
+                  
+  <div class="position-fixed bottom-1 end-1 z-index-2">
+        <div class="toast p-2 bg-white" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+          <div class="toast-header border-0">
+            <i class="material-icons text-success me-2">
+        check
+      </i>
+            <span class="me-auto font-weight-bold">Material Dashboard </span>
+            <small class="text-body">11 mins ago</small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+          </div>
+          <hr class="horizontal dark m-0">
+          <div class="toast-body">
+            Hello, world! This is a notification message.
+          </div>
+        </div>
+        <div class="toast fade hide p-2 mt-2 bg-gradient-info" role="alert" aria-live="assertive" id="infoToast" aria-atomic="true">
+          <div class="toast-header bg-transparent border-0">
+            <i class="material-icons text-white me-2">
+        notifications
+      </i>
+            <span class="me-auto text-white font-weight-bold">Material Dashboard </span>
+            <small class="text-white">11 mins ago</small>
+            <i class="fas fa-times text-md text-white ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+          </div>
+          <hr class="horizontal light m-0">
+          <div class="toast-body text-white">
+            Hello, world! This is a notification message.
+          </div>
+        </div>
+        <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="warningToast" aria-atomic="true">
+          <div class="toast-header border-0">
+            <i class="material-icons text-warning me-2">
+        travel_explore
+      </i>
+            <span class="me-auto font-weight-bold">Material Dashboard </span>
+            <small class="text-body">11 mins ago</small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+          </div>
+          <hr class="horizontal dark m-0">
+          <div class="toast-body">
+            Hello, world! This is a notification message.
+          </div>
+        </div>
+        <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="dangerToast" aria-atomic="true">
+          <div class="toast-header border-0">
+            <i class="material-icons text-danger me-2">
+        campaign
+      </i>
+            <span class="me-auto text-gradient text-danger font-weight-bold">Material Dashboard </span>
+            <small class="text-body">11 mins ago</small>
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+          </div>
+          <hr class="horizontal dark m-0">
+          <div class="toast-body">
+            Hello, world! This is a notification message.
+          </div>
+        </div>
+      </div>
+      <!-- notifikasi -->
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -185,6 +202,11 @@
       </div>
     </div>
   </div>
+
+  <!-- NOTIFIKASI -->
+  
+
+
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
@@ -203,5 +225,31 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
+
+  <!-- button to show notif -->
+  
 </body>
+
+<script>
+  function kerjakan(){
+    $.ajax({
+      type: 'POST',
+      url:'ajax_form_pinjam.php',
+      data: $('#inputform').serialize(),
+      success: function(data){
+        if(data=='success'){
+          document.getElementById('success').click();
+        }else if(data=='duplikat'){
+          document.getElementById('bahaya').click();
+        }else{
+          document.getElementById('failed').click();
+        } 
+      },
+      error: function(){
+        alert('error')
+      }
+    })
+  }
+</script>
+
 </html>
