@@ -51,7 +51,23 @@
                 </div>
                   <div class="mb-3 ms-5 me-5 col-4">
                     <label for="id_buku" class="form-label" value="NRP">Masukkan ID Buku</label>
-                    <input type="text" placeholder="Search id Buku" class="form-control d-inline" name="id_buku">
+                    <input type="text" placeholder="Search id Buku" class="form-control d-inline" name="id_buku" onchange="show()">
+                  </div>
+                  <div class="table-responsive p-0 mb-3 ms-5 me-5" id="show">
+                    <table class="table align-items-center mb-0">
+                      <thead>
+                        <tr>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">Id Buku</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul Buku</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pengarang</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Penerbit</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="isi">
+                        
+                      </tbody>
+                    </table>
                   </div>                
                 <input type="button" class="btn btn-primary ms-5 me-5 float-end" name="submit" onclick="kerjakan()" value="SUBMIT"></input>
                 <!-- <input type="checkbox" id="bismillah"> -->
@@ -60,6 +76,7 @@
               <button class="btn bg-gradient-success w-100 mb-0 toast-btn" style="display: none;" id="success" type="button" data-target="successToast">Success</button>
               <button class="btn bg-gradient-danger w-100 mb-0 toast-btn" style="display: none;" id="failed" type="button" data-target="dangerToast">Failed</button>
               <button class="btn bg-gradient-danger w-100 mb-0 toast-btn" style="display: none;" id="bahaya" type="button" data-target="warningToast">Failed</button>
+              
             </div>
         </div>
             </div>
@@ -244,6 +261,24 @@
         }else{
           document.getElementById('failed').click();
         } 
+      },
+      error: function(){
+        alert('error')
+      }
+    })
+  }
+  $(document).ready(function(){
+        $('#show').hide();
+      })
+  function show(){
+    $.ajax({
+      type: 'POST',
+      url:'tampilbuku.php',
+      data: $('#inputform').serialize(),
+      success: function(data){
+        //alert(data);
+        $('#show').show();
+        $('#isi').html(data);
       },
       error: function(){
         alert('error')
