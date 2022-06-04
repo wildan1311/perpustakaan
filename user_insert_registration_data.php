@@ -7,22 +7,24 @@
         $database = new PDO("mysql:$hostname;dbname=mysql" ,
             $username ,
             $password);
+
+        $nama = $_POST['nama'];
+        $nrp = $_POST['nrp'];
+        $email = $_POST['email'];
+        $alamat = $_POST['alamat'];
+
+        $insertString = "INSERT INTO perpustakaan.user(id_anggota , nama , email , alamat)
+            VALUES('$nrp' , '$nama' , '$email' , '$alamat')";
+
+        $database->exec($insertString);
+        $database = null;
+        header("Location: user_daftar.php");
+
     }catch(PDOException $e){
-        echo $e->getMessage();
+        $messages = $e->getMessage();
+        echo "$messages<br><br>";
+        echo "Error, Kemungkinan karena NRP sudah pernah digunakan. Coba daftar dengan NRP lain!";
     }
-
-    $nama = $_POST['nama'];
-    $password = $_POST['password'];
-    $nrp = $_POST['nrp'];
-    $email = $_POST['email'];
-    $alamat = $_POST['alamat'];
-
-    $insertString = "INSERT INTO perpustakaan.user(id_anggota , nama , email , alamat , password)
-        VALUES('$nrp' , '$nama' , '$email' , '$alamat' ,'$password')";
-
-    $database->exec($insertString);
-    $database = null;
-
-    header("Location: user_daftar.php");
+    
     exit;
 ?>

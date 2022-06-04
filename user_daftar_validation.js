@@ -1,13 +1,13 @@
 const form = document.getElementById('form');
 
 form.addEventListener('submit' , (e) => {    
-    if (!isValidNRP() || !isValidNama() || !isValidPassword() ||
+    if (!isValidNRP() || !isValidNama() ||
      !confirm("Yakin ingin mensubmit data?"))
         e.preventDefault();
 });
     
 function debugValidate(){
-    if (isValidNRP() && isValidNama() && isValidPassword())
+    if (isValidNRP() && isValidNama())
         console.log("sukses");
     else
         console.log("gagal");
@@ -21,21 +21,6 @@ function isValidNama(){
             alert("Nama hanya boleh berisi huruf alphabet dan spasi");
             return false;
         }   
-    return true;
-}
-
-function isValidPassword(){
-    const password = document.getElementById('password').value;
-    const confirm_password = document.getElementById('confirm_password').value;
-
-    if (confirm_password !== password){
-        alert("Password tidak sama");
-        return false;
-    }
-    if (password.length < 8){
-        alert("Panjang password harus berisi lebih dari 7 karakter");
-        return false;
-    }
     return true;
 }
 
