@@ -27,8 +27,8 @@ function isValidNama(){
 function isValidNRP(){
     const nrp = document.getElementById('nrp').value;
 
-    if (nrp.length == 0){
-        alert('NRP tidak boleh kosong');
+    if (nrp.length > 10){
+        alert('NRP tidak boleh lebih dari 10 karakter');
         return false;
     }
 
