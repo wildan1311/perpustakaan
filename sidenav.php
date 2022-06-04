@@ -4,22 +4,37 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
-      var id = cssappend(id);
-  function cssappend(id){
-    var css = document.getElementById("style");
-    css.classList.add("active bg-gradient-primary");
-    return id;
-  }
-
-  function cssremove(id){
-    var css = document.getElementById(id);
-    css.parentNode.removeChild(css);
-
-
-    //document.getElementById(id).className = "active bg-gradient-primary";
-
-  }
+      $(document).ready(function(){
+      var filename = window.location.href;
+      filename = filename.substring(filename.lastIndexOf('/')+1);
+      switch(filename){
+        case 'dashboard.php':
+          $('#dashboard').addClass('active');
+          $('#dashboard').addClass('bg-gradient-primary');
+          break;
+        case 'tables.php':
+          $('#tables').addClass('active');
+          $('#tables').addClass('bg-gradient-primary');
+          break;
+        case 'input_Buku.php':
+          $('#billing').addClass('active');
+          $('#billing').addClass('bg-gradient-primary');
+          break;
+        case 'form_pinjam.php':
+          $('#form_pinjam').addClass('active');
+          $('#form_pinjam').addClass('bg-gradient-primary');
+          break;
+        case 'user_daftar.php':
+          $('#user_daftar').addClass('active');
+          $('#user_daftar').addClass('bg-gradient-primary');
+          break;
+        default:
+          $('#dashboard').addClass('active');
+          $('#dashboard').addClass('bg-gradient-primary');
+          break;
+      }});
 </script>
 </head>
 <body>
@@ -35,7 +50,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item ">
-          <a class="nav-link text-white" id="dashboard" href="dashboard.php" onclick="cssappend(id)">
+          <a class="nav-link text-white" id="dashboard" href="dashboard.php" onclick="klik()">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -43,7 +58,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="tables.php">
+          <a class="nav-link text-white" id="tables" href="tables.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -51,7 +66,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="billing.php">
+          <a class="nav-link text-white" id="billing" href="input_Buku.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -59,14 +74,14 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="form_pinjam.php">
+          <a class="nav-link text-white " id="form_pinjam" href="form_pinjam.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
             <span class="nav-link-text ms-1">Form Pinjam</span>
           </a>
         <li class="nav-item">
-          <a class="nav-link text-white " href="user_daftar.php">
+          <a class="nav-link text-white " id="user_daftar" href="user_daftar.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -139,6 +154,7 @@
         <a class="btn bg-gradient-primary mt-4 w-100" href="https://www.creative-tim.com/product/material-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a>
       </div>
     </div> -->
+    <button style="display: none;" id="triger"></button>
   </aside>
 
 </body>

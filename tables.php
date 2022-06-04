@@ -114,16 +114,39 @@
                       $result = mysqli_query($koneksi, $banyak_page);
                       $baris = mysqli_fetch_assoc($result);
                       $total_pages = ceil($baris['total']/10); // calculate total pages with results 
+                      
                       echo "<tr>
-                              <td colspan='5'>
+                            <td colspan='5'>
                       ";
-                      for ($i=1; $i<=$total_pages; $i++) {  // print links for all pages
-                                  echo "<a href='tables.php?page=".$i."'";
-                                  if ($i==$page)  echo "class='curPage'";
-                                  echo ">$i </a> ";
-                      };
+                      echo '<nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-end">';
+                      if($page <= 1){
+                        
+                        echo '<li class="page-item disable">
+                        <a class="page-link" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item">'; $page = $page + 1;echo'
+                          <a class="page-link" href="tables.php?page='.$page.'">Next</a>
+                        </li>';
+                      }else if($page >= $total_pages){
+                          echo '<li class="page-item">'; $page = $page - 1;echo'
+                          <a class="page-link" href="tables.php?page='.$page.'">Previous</a>
+                          </li><li class="page-item disable">
+                          <a class="page-link" tabindex="-1">Next</a>
+                          </li>';
+                      }echo'
+                      </ul>
+                    </nav>';
+                      // for ($i=1; $i<=$total_pages; $i++) {  // print links for all pages 
+                      //   echo "<a href='?page=".$i."' class='btn btn-sm btn-outline-primary'>".$i."</a> "; 
+                      // }
+                      // for ($i=1; $i<=$total_pages; $i++) {  // print links for all pages
+                      //             echo "<a href='tables.php?page=".$i."'";
+                      //             if ($i==$page)  echo "class='curPage'";
+                      //             echo ">$i </a> ";
+                      // };
                       echo "
-                              </td>
+                            </td>
                               </tr>
                       ";
                     ?>

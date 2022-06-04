@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,6 +24,7 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
+  <!-- sidenav -->
   <?php
     @include 'sidenav.php';
   ?>
@@ -34,6 +34,7 @@
       @include 'navbar.php';
     ?>
     <!-- End Navbar -->
+    <!-- FORM PEMINJAMAN -->
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -73,17 +74,18 @@
                 <!-- <input type="checkbox" id="bismillah"> -->
                 </div>
             </form>
+            <!-- end form -->
+            <!-- show notif -->
               <button class="btn bg-gradient-success w-100 mb-0 toast-btn" style="display: none;" id="success" type="button" data-target="successToast">Success</button>
               <button class="btn bg-gradient-danger w-100 mb-0 toast-btn" style="display: none;" id="failed" type="button" data-target="dangerToast">Failed</button>
               <button class="btn bg-gradient-danger w-100 mb-0 toast-btn" style="display: none;" id="bahaya" type="button" data-target="warningToast">Failed</button>
-              
             </div>
         </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- NOTIF -->
+  <!-- NOTIF -->
                   
   <div class="position-fixed bottom-1 end-1 z-index-2">
         <div class="toast p-2 bg-white" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
@@ -91,13 +93,13 @@
             <i class="material-icons text-success me-2">
         check
       </i>
-            <span class="me-auto font-weight-bold">Material Dashboard </span>
-            <small class="text-body">11 mins ago</small>
+            <span class="me-auto font-weight-bold">SIM PERPUSTAKAAN</span>
+            <small class="text-body"><?php date("h:i:sa"); ?></small>
             <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
           </div>
           <hr class="horizontal dark m-0">
           <div class="toast-body">
-            Hello, world! This is a notification message.
+            Data Berhasil Ditambahkan
           </div>
         </div>
         <div class="toast fade hide p-2 mt-2 bg-gradient-info" role="alert" aria-live="assertive" id="infoToast" aria-atomic="true">
@@ -105,13 +107,13 @@
             <i class="material-icons text-white me-2">
         notifications
       </i>
-            <span class="me-auto text-white font-weight-bold">Material Dashboard </span>
-            <small class="text-white">11 mins ago</small>
+            <span class="me-auto text-white font-weight-bold">SIM PERPUSTAKAAN</span>
+            <small class="text-white"><?php date("h:i:sa"); ?></small>
             <i class="fas fa-times text-md text-white ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
           </div>
           <hr class="horizontal light m-0">
           <div class="toast-body text-white">
-            Hello, world! This is a notification message.
+            Duplikat Data
           </div>
         </div>
         <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="warningToast" aria-atomic="true">
@@ -119,13 +121,13 @@
             <i class="material-icons text-warning me-2">
         travel_explore
       </i>
-            <span class="me-auto font-weight-bold">Material Dashboard </span>
-            <small class="text-body">11 mins ago</small>
+            <span class="me-auto font-weight-bold">SIM PERPUSTAKAAN</span>
+            <small class="text-body"><?php date("h:i:sa"); ?></small>
             <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
           </div>
           <hr class="horizontal dark m-0">
           <div class="toast-body">
-            Hello, world! This is a notification message.
+            NRP atau id Buku tidak tersedia.
           </div>
         </div>
         <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="dangerToast" aria-atomic="true">
@@ -133,19 +135,19 @@
             <i class="material-icons text-danger me-2">
         campaign
       </i>
-            <span class="me-auto text-gradient text-danger font-weight-bold">Material Dashboard </span>
-            <small class="text-body">11 mins ago</small>
+            <span class="me-auto text-gradient text-danger font-weight-bold">SIM PERPUSTAKAAN</span>
+            <small class="text-body"><?php date("h:i:sa"); ?></small>
             <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
           </div>
           <hr class="horizontal dark m-0">
           <div class="toast-body">
-            Hello, world! This is a notification message.
+            NRP atau id Buku tidak tersedia.
           </div>
         </div>
       </div>
       <!-- notifikasi -->
   </main>
-  <div class="fixed-plugin">
+  <!-- <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
       <i class="material-icons py-2">settings</i>
     </a>
@@ -159,13 +161,13 @@
           <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
             <i class="material-icons">clear</i>
           </button>
-        </div>
+        </div> -->
         <!-- End Toggle Button -->
-      </div>
-      <hr class="horizontal dark my-1">
-      <div class="card-body pt-sm-3 pt-0">
+      <!-- </div>
+      <hr class="horizontal dark my-1"> -->
+      <!-- <div class="card-body pt-sm-3 pt-0"> -->
         <!-- Sidebar Backgrounds -->
-        <div>
+        <!-- <div>
           <h6 class="mb-0">Sidebar Colors</h6>
         </div>
         <a href="javascript:void(0)" class="switch-trigger background-color">
@@ -177,9 +179,9 @@
             <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
             <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
           </div>
-        </a>
+        </a> -->
         <!-- Sidenav Type -->
-        <div class="mt-3">
+        <!-- <div class="mt-3">
           <h6 class="mb-0">Sidenav Type</h6>
           <p class="text-sm">Choose between 2 different sidenav types.</p>
         </div>
@@ -188,9 +190,9 @@
           <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
           <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
         </div>
-        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p> -->
         <!-- Navbar Fixed -->
-        <div class="mt-3 d-flex">
+        <!-- <div class="mt-3 d-flex">
           <h6 class="mb-0">Navbar Fixed</h6>
           <div class="form-check form-switch ps-0 ms-auto my-auto">
             <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
@@ -218,7 +220,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- NOTIFIKASI -->
   
