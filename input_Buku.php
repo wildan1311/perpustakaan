@@ -24,7 +24,7 @@
     Material Dashboard 2 by Creative Tim
   </title>
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900%7CRoboto+Slab:400,700" />
   <!-- Nucleo Icons -->
   <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -51,37 +51,44 @@
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
+
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3">Form Buku</h6>
               </div>
             </div>
+
             <div class="card-body px-0 pb-2">
-              <form action="inputbuku.php" method="post"></form>
+              <form action="inputbuku.php" method="post">
+
                 <div class="mb-3 ms-5 me-5">
-                  <label for="id_buku" class="form-label">Id Buku</label>
-                  <input type="text" class="form-control" id="id_buku" name="id_buku" aria-describedby="emailHelp" required>
+                  <label for="id_buku" class="form-label" id="id_label">Id Buku</label>
+                  <input type="text" class="form-control" id="id_buku" name="id_buku" aria-describedby="id_label" required>
                 </div>
+
                 <div class="mb-3 ms-5 me-5">
                   <label for="judul" class="form-label">Judul</label>
-                  <input type="text" class="form-control" id="Penerbit" name="judul">
+                  <input type="text" class="form-control" id="judul" name="judul">
                 </div>
+
                 <div class="mb-3 ms-5 me-5">
-                  <label for="Pengarang" class="form-label">Pengarang</label>
-                  <input type="text" class="form-control" id="Pengarang" name="Pengarang" aria-describedby="emailHelp" required>
+                  <label for="Pengarang" class="form-label" id="label_pengarang">Pengarang</label>
+                  <input type="text" class="form-control" id="Pengarang" name="Pengarang" aria-describedby="label_pengarang" required>
                 </div>
+
                 <div class="mb-3 ms-5 me-5">
                   <label for="Penerbit" class="form-label">Penerbit</label>
                   <input type="text" class="form-control" id="Penerbit" name="Penerbit">
                 </div>
-                <!-- <div class="mb-3 ms-5 me-5 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div> -->
-                <button type="submit" class="btn btn-primary ms-5 me-5 float-end">Submit</button>
-                </div>
-              </form>
-          </div>
 
+                <button type="submit" class="btn btn-primary ms-5 me-5 float-end">Submit</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
