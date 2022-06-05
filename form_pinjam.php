@@ -128,7 +128,7 @@
           </div>
           <hr class="horizontal dark m-0">
           <div class="toast-body">
-            NRP atau id Buku tidak tersedia.
+            Duplikat Data.
           </div>
         </div>
         <div class="toast fade hide p-2 mt-2 bg-white" role="alert" aria-live="assertive" id="dangerToast" aria-atomic="true">

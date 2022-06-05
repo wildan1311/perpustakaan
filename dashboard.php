@@ -110,8 +110,6 @@
               </div>
             </div>
 
-
-
           </div>
         </div>
         <!-- <div class="col-xl-3 col-sm-6">
@@ -231,29 +229,36 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Members</th>
                     </tr>
                   </thead>
-                  <tr>
-
-                  
+                  <?php
+                    $sql = "SELECT b.judul FROM transaksi t JOIN buku b ON t.id_buku = b.id_buku GROUP BY b.judul ORDER BY COUNT(b.judul) DESC";
+                    $result = mysqli_query($koneksi, $sql);
+                    $no = 1;
+                    while ($row = mysqli_fetch_assoc($result)) {
+                      echo '<tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Redesign New Online Shop</h6>
+                            <h6 class="mb-0 text-sm">'.$row['judul'].'</h6>
                           </div>
                         </div>
                       </td>
 
                       <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="./assets/img/team-1.jpg" alt="user6">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="./assets/img/team-4.jpg" alt="user7">
-                          </a>
-                        </div>
+                        <div class="avatar-group mt-2">';
+                          $avatar = "select u.gambar from user u, buku b, transaksi t where t.id_buku = b.id_buku and t.id_anggota = u.id_anggota and b.judul = '".$row['judul']."'";
+                          $result2 = mysqli_query($koneksi, $avatar);
+                          while ($row2 = mysqli_fetch_assoc($result2)) {
+                            echo '<a href="javascript:;" class="avatar avatar-xs rounded-circle" data-toggle="tooltip" data-original-title="'.$row2['gambar'].'">
+                              <img src="/assets/img/'.$row2['gambar'].'" alt="Image placeholder" class="rounded-circle">
+                            </a>';
+                          }
+                        echo '</div>
                       </td>
 
-                    </tr>
+                    </tr>';
+                      $no++;
+                    }
+                  ?>
                 </table>
               </div>
             </div>
