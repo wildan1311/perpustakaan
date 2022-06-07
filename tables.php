@@ -71,13 +71,6 @@
                     <?php
                       @include 'koneksi.php';
                       
-                      if(isset($_GET['page'])){
-                        $page = $_GET['page'];
-                      }else{
-                        $page = 1;
-                      }
-
-                      $startfrom = ($page-1) * 10;
                       $sql = "select buku.judul, user.nama, transaksi.tgl_pinjam, transaksi.tgl_kembali, user.email
                       from transaksi, user, buku
                       where buku.id_buku=transaksi.id_buku and user.id_anggota=transaksi.id_anggota";

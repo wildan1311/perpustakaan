@@ -12,9 +12,20 @@
         $nrp = $_POST['nrp'];
         $email = $_POST['email'];
         $alamat = $_POST['alamat'];
+        $gambar = $_POST['gambar'];
 
-        $insertString = "INSERT INTO perpustakaan.user(id_anggota , nama , email , alamat)
-            VALUES('$nrp' , '$nama' , '$email' , '$alamat')";
+        $insertString = "INSERT INTO perpustakaan.user(id_anggota , nama , email , alamat, gambar)
+            VALUES('$nrp' , '$nama' , '$email' , '$alamat', '$gambar')";
+        
+
+        // ambil data file
+        $namaFile = $gambar;
+
+        // tentukan lokasi file akan dipindahkan
+        $dirUpload = "assets/img/";
+
+        // pindahkan file
+        $terupload = move_uploaded_file($namaFile, $dirUpload.$namaFile);
 
         $database->exec($insertString);
         $database = null;

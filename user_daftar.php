@@ -69,6 +69,11 @@
                   <input type="text" class="form-control" id="alamat" name="alamat" required>
                 </div>
 
+                <div class="mb-3 ms-5 me-5">
+                  <label for="formFile" class="form-label">Gambar</label>
+                  <input class="form-control" type="file" id="formFile" name="gambar">
+                </div>
+
                 <input type="submit" class="btn btn-primary ms-5 me-5 float-end" value="SUBMIT">
 
               </form>
