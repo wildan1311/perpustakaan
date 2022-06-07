@@ -12,7 +12,12 @@
         $nrp = $_POST['nrp'];
         $email = $_POST['email'];
         $alamat = $_POST['alamat'];
-        $gambar = $_POST['gambar'];
+
+        if(isset($_POST['gambar'])){
+            $gambar = $_POST['gambar'];
+        }else{
+            $gambar = "default.jpg";
+        }
 
         $insertString = "INSERT INTO perpustakaan.user(id_anggota , nama , email , alamat, gambar)
             VALUES('$nrp' , '$nama' , '$email' , '$alamat', '$gambar')";
