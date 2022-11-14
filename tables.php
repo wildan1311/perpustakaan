@@ -1,17 +1,7 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v=3.0.2
-=========================================================
+<?php
+  include_once('koneksi.php');
+?>
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,35 +59,29 @@
                   </thead>
                   <tbody>
                     <?php
-                      @include 'koneksi.php';
-                      
-                      $sql = "select buku.judul, user.nama, transaksi.tgl_pinjam, transaksi.tgl_kembali, user.email
-                      from transaksi, user, buku
-                      where buku.id_buku=transaksi.id_buku and user.id_anggota=transaksi.id_anggota";
-
-
-                      $row = mysqli_fetch_all(mysqli_query($koneksi, $sql),MYSQLI_ASSOC);
-                      foreach($row as $row){
+                      $sql = ociparse($koneksi, "select buku.judul, pengguna.nama, transaksi.tgl_pinjam, transaksi.tgl_kembali, pengguna.email from transaksi, pengguna, buku where buku.id_buku=transaksi.id_buku and pengguna.nrp=transaksi.id_anggota");
+                      ociexecute($sql);
+                      while(ocifetch($sql)){
                         echo"<tr>
                         <td>
                           <div class='d-flex px-2 py-1'>
                             <div class='d-flex flex-column justify-content-center'>
-                              <h6 class='mb-0 text-sm'>".$row['nama']."</h6>
-                              <p class='text-xs text-secondary mb-0'>".$row['email']."</p>
+                              <h6 class='mb-0 text-sm'>".ociresult($sql, 'nama')."</h6>
+                              <p class='text-xs text-secondary mb-0'>".ociresult($sql, 'email')."</p>
                             </div>
                           </div>
                         </td>
                         <td>
-                          <p class='text-xs font-weight-bold mb-0'>".$row['judul']."</p>
+                          <p class='text-xs font-weight-bold mb-0'>".ociresult($sql, 'judul')."</p>
                         </td>
                         <td class='align-middle text-center text-sm'>
                           <span class='badge badge-sm bg-gradient-success'>Pinjam</span>
                         </td>
                         <td class='align-middle text-center'>
-                          <span class='text-secondary text-xs font-weight-bold'>".$row['tgl_pinjam']."</span>
+                          <span class='text-secondary text-xs font-weight-bold'>".ociresult($sql, 'tgl_pinjam')."</span>
                         </td>
                         <td class'align-middle'>
-                          <span class='text-secondary text-xs font-weight-bold'>".$row['tgl_kembali']."</span>
+                          <span class='text-secondary text-xs font-weight-bold'>".ociresult($sql, 'tgl_kembali')."</span>
                         </td>
                       </tr>";
                       }

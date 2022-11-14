@@ -1,22 +1,8 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v=3.0.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-
 <?php
   // if(!isset($_SESSION['login'])){
   //   header("location:loginadmin.php");
   // }
+  @include 'koneksi.php';
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +32,6 @@
 
 <body class="g-sidenav-show  bg-gray-200">
   <?php
-
     @include 'sidenav.php';
   ?>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -61,107 +46,6 @@
           <h6 class="font-weight-bolder mb-0">Dashboard</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 float-end" id="navbar">
-          <!-- <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group input-group-outline">
-              <label class="form-label">Type here...</label>
-              <input type="text" class="form-control">
-            </div>
-          </div> -->
-          <!-- <ul class="navbar-nav  justify-content-end float-end">
-            <li class="nav-item d-flex align-items-center float-end">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
-              </a>
-            </li> 
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
-            </li>
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="./assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New message</span> from Laur
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          13 minutes ago
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="./assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New album</span> by Travis Scott
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          1 day
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>credit-card</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(453.000000, 454.000000)">
-                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          Payment successfully completed
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          2 days
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul> -->
         </div>
       </div>
     </nav>
@@ -176,11 +60,12 @@
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize mb-05" >Total Peminjaman</p>
-                <h4 class="mb-0"><?php
-                  @include 'koneksi.php';
-                  
-                  $banyak_peminjaman = mysqli_fetch_array(mysqli_query($koneksi, "Select count(*) from transaksi"));;
-                  echo "<h4 class='mb-0'>".$banyak_peminjaman['count(*)']."</h4>"
+                <h4 class="mb-0">
+                <?php
+                  $sql = ociparse($koneksi, 'Select count(*) from pengguna');
+                  ociexecute($sql);
+                  ocifetch($sql);
+                  echo "<h4 class='mb-0'>".ociresult($sql, 1)."</h4>"
                 ?>
                 </h4>
               </div>
@@ -199,13 +84,14 @@
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Banyak user</p>
-                <h4 class="mb-0"><?php
-                  @include 'koneksi.php';
-
-                  $banyak_peminjaman = mysqli_fetch_array(mysqli_query($koneksi, "Select count(*) from user"));;
-                  echo $banyak_peminjaman['count(*)'];
-
-                ?></h4>
+                <h4 class="mb-0">
+                  <?php
+                    $sql = ociparse($koneksi, 'Select count(*) from pengguna');
+                    ociexecute($sql);
+                    ocifetch($sql);
+                    echo ociresult($sql, 1);
+                  ?>
+                </h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -222,13 +108,14 @@
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Banyak Buku</p>
-                 <h4 class="mb-0"><?php
-                  @include 'koneksi.php';
-
-                  $banyak_peminjaman = mysqli_fetch_array(mysqli_query($koneksi, "Select count(*) from buku"));;
-                  echo $banyak_peminjaman['count(*)'];
-
-                ?></h4>
+                <h4 class="mb-0">
+                  <?php
+                    $sql = ociparse($koneksi, 'Select count(*) from pengguna');
+                    ociexecute($sql);
+                    ocifetch($sql);
+                    echo ociresult($sql, 1);
+                  ?>
+                </h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -237,86 +124,7 @@
             </div> 
           </div>
         </div>
-        <!-- <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Sales</p>
-                <h4 class="mb-0">$103,430</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
-            </div>
-          </div>
-        </div> -->
       </div>
-      <!-- <div class="row mt-4">
-        <div class="col-lg-4 col-md-6 mt-4 mb-4">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h6 class="mb-0 ">Website Views</h6>
-              <p class="text-sm ">Last Campaign Performance</p>
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> campaign sent 2 days ago </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 mt-4 mb-4">
-          <div class="card z-index-2  ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <canvas id="chart-line" class="chart-canvas" height="170"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h6 class="mb-0 "> Daily Sales </h6>
-              <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in today sales. </p>
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> updated 4 min ago </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mt-4 mb-3">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <canvas id="chart-line-tasks" class="chart-canvas" height="170"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h6 class="mb-0 ">Completed Tasks</h6>
-              <p class="text-sm ">Last Campaign Performance</p>
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm">just updated</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
       <div class="row mb-4 mt-5">
         <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
           <div class="card">
@@ -326,9 +134,11 @@
                   <h6>Buku Paling Banyak Diminati</h6>
                   <p class="text-sm mb-0">
                     <i class="fa fa-check text-info" aria-hidden="true"></i>
-                    <span class="font-weight-bold ms-1"><?php
+                    <span class="font-weight-bold ms-1">
+                      <?php
                       // ambil banyak buku yang terbanyak
-                    ?></span>
+                      ?>
+                    </span>
                   </p>
                 </div>
                 <div class="col-lg-6 col-5 my-auto text-end">
@@ -594,75 +404,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="col-lg-4 col-md-6">
-          <div class="card h-100">
-            <div class="card-header pb-0">
-              <h6>Orders overview</h6>
-              <p class="text-sm">
-                <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                <span class="font-weight-bold">24%</span> this month
-              </p>
-            </div>
-            <div class="card-body p-3">
-              <div class="timeline timeline-one-side">
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-success text-gradient">notifications</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">$2400, Design changes</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">code</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New order #1832412</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 11 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-info text-gradient">shopping_cart</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Server payments for April</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 9:34 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-warning text-gradient">credit_card</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New card added for order #4395133</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">20 DEC 2:20 AM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-primary text-gradient">key</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Unlock packages for development</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">18 DEC 4:54 AM</p>
-                  </div>
-                </div>
-                <div class="timeline-block">
-                  <span class="timeline-step">
-                    <i class="material-icons text-dark text-gradient">payments</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
       <footer class="footer py-4  ">
         <div class="container-fluid">
