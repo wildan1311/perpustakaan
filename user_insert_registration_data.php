@@ -19,7 +19,7 @@
             $gambar = "default.jpg";
         }
 
-        $insertString = "INSERT INTO perpustakaan.user(id_anggota , nama , email , alamat, gambar)
+        $insertString = "INSERT INTO perpustakaan.pengguna(id_anggota , nama , email , alamat, gambar)
             VALUES('$nrp' , '$nama' , '$email' , '$alamat', '$gambar')";
         
 
