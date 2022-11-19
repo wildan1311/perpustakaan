@@ -7,6 +7,7 @@
   $row = ociparse($koneksi, $sql);
   ociexecute($row);
   $row = oci_fetch_assoc($row);
+  if ($row)
   // print_r($row);
     echo"<tr>
     <td>
