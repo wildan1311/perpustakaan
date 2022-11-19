@@ -62,7 +62,7 @@
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize mb-05">Total Peminjaman</p>
                 <h4 class="mb-0"><?php
-                                  $sql = ociparse($koneksi, 'Select count(*) from pengguna');
+                                  $sql = ociparse($koneksi, 'Select count(*) from transaksi');
                                   ociexecute($sql);
                                   ocifetch($sql);
                                   echo "<h4 class='mb-0'>" . ociresult($sql, 1) . "</h4>"
@@ -106,7 +106,7 @@
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Banyak Buku</p>
                 <h4 class="mb-0"><?php
-                                  $sql = ociparse($koneksi, 'Select count(*) from pengguna');
+                                  $sql = ociparse($koneksi, 'Select count(*) from buku');
                                   ociexecute($sql);
                                   ocifetch($sql);
                                   echo ociresult($sql, 1);
@@ -125,7 +125,6 @@
                 <div class="col-lg-6 col-7">
                   <h6>Buku Paling Banyak Diminati</h6>
                   <p class="text-sm mb-0">
-                    <i class="fa fa-check text-info" aria-hidden="true"></i>
                     <span class="font-weight-bold ms-1"><?php
                                                         // ambil banyak buku yang terbanyak
                                                         ?></span>
@@ -197,8 +196,7 @@
               <div class="copyright text-center text-sm text-muted text-lg-start">
                 © <script>
                   document.write(new Date().getFullYear())
-                </script> made by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">DanBiFa</a>
+                </script> made by DanBiFa
               </div>
             </div>
           </div>

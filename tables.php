@@ -103,8 +103,7 @@ include_once('koneksi.php');
               <div class="copyright text-center text-sm text-muted text-lg-start">
                 © <script>
                   document.write(new Date().getFullYear())
-                </script> made by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">DanBiFa</a>
+                </script> made by DanBiFa
               </div>
             </div>
           </div>
