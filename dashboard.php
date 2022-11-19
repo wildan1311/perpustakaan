@@ -1,8 +1,8 @@
 <?php
-  // if(!isset($_SESSION['login'])){
-  //   header("location:loginadmin.php");
-  // }
-  @include 'koneksi.php';
+// if(!isset($_SESSION['login'])){
+//   header("location:loginadmin.php");
+// }
+@include 'koneksi.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <title>
-    Material Dashboard 2 by Creative Tim
+    SIM Perpustakaan
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -33,7 +33,7 @@
 
 <body class="g-sidenav-show  bg-gray-200">
   <?php
-    @include 'sidenav.php';
+  @include 'sidenav.php';
   ?>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
@@ -60,13 +60,13 @@
                 <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize mb-05" >Total Peminjaman</p>
+                <p class="text-sm mb-0 text-capitalize mb-05">Total Peminjaman</p>
                 <h4 class="mb-0"><?php
-                  $sql = ociparse($koneksi, 'Select count(*) from pengguna');
-                  ociexecute($sql);
-                  ocifetch($sql);
-                  echo "<h4 class='mb-0'>".ociresult($sql, 1)."</h4>"
-                ?>
+                                  $sql = ociparse($koneksi, 'Select count(*) from pengguna');
+                                  ociexecute($sql);
+                                  ocifetch($sql);
+                                  echo "<h4 class='mb-0'>" . ociresult($sql, 1) . "</h4>"
+                                  ?>
                 </h4>
               </div>
             </div>
@@ -85,11 +85,11 @@
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Banyak user</p>
                 <h4 class="mb-0"><?php
-                  $sql = ociparse($koneksi, 'Select count(*) from pengguna');
-                  ociexecute($sql);
-                  ocifetch($sql);
-                  echo ociresult($sql, 1);
-                ?></h4>
+                                  $sql = ociparse($koneksi, 'Select count(*) from pengguna');
+                                  ociexecute($sql);
+                                  ocifetch($sql);
+                                  echo ociresult($sql, 1);
+                                  ?></h4>
               </div>
             </div>
 
@@ -97,7 +97,7 @@
 
           </div>
         </div>
-        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4"> 
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
@@ -105,12 +105,12 @@
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Banyak Buku</p>
-                 <h4 class="mb-0"><?php
-                    $sql = ociparse($koneksi, 'Select count(*) from pengguna');
-                    ociexecute($sql);
-                    ocifetch($sql);
-                    echo ociresult($sql, 1);
-                ?></h4>
+                <h4 class="mb-0"><?php
+                                  $sql = ociparse($koneksi, 'Select count(*) from pengguna');
+                                  ociexecute($sql);
+                                  ocifetch($sql);
+                                  echo ociresult($sql, 1);
+                                  ?></h4>
               </div>
             </div>
 
@@ -127,8 +127,8 @@
                   <p class="text-sm mb-0">
                     <i class="fa fa-check text-info" aria-hidden="true"></i>
                     <span class="font-weight-bold ms-1"><?php
-                      // ambil banyak buku yang terbanyak
-                    ?></span>
+                                                        // ambil banyak buku yang terbanyak
+                                                        ?></span>
                   </p>
                 </div>
                 <div class="col-lg-6 col-5 my-auto text-end">
@@ -155,34 +155,34 @@
                     </tr>
                   </thead>
                   <?php
-                    $sql = ociparse($koneksi, "SELECT b.judul FROM transaksi t JOIN buku b ON t.id_buku = b.id_buku GROUP BY b.judul ORDER BY COUNT(b.judul) DESC");
-                    ociexecute($sql);
-                    $no = 1;
-                    while (ocifetch($sql)) {
-                      echo '<tr>
+                  $sql = ociparse($koneksi, "SELECT b.judul FROM transaksi t JOIN buku b ON t.id_buku = b.id_buku GROUP BY b.judul ORDER BY COUNT(b.judul) DESC");
+                  ociexecute($sql);
+                  $no = 1;
+                  while (ocifetch($sql)) {
+                    echo '<tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">'.ociresult($sql, "judul").'</h6>
+                            <h6 class="mb-0 text-sm">' . ociresult($sql, "JUDUL") . '</h6>
                           </div>
                         </div>
                       </td>
 
                       <td>
                         <div class="avatar-group mt-2">';
-                          $avatar = ociparse($koneksi, "select u.gambar from user u, buku b, transaksi t where t.id_buku = b.id_buku and t.id_anggota = u.id_anggota and b.judul = '".ociresult($sql, "judul")."'");
-                          ociexecute($avatar);
-                          while (ocifetch($avatar)) {
-                            echo '<a href="javascript:;" class="avatar avatar-xs rounded-circle" data-toggle="tooltip" data-original-title="'.$row2['gambar'].'">
-                              <img src="/assets/img/'.ociresult($avatar, "gambar").'" alt="Image placeholder" class="rounded-circle">
+                    $avatar = ociparse($koneksi, "select u.gambar from pengguna u, buku b, transaksi t where t.id_buku = b.id_buku and t.id_anggota = u.nrp and b.judul = '" . ociresult($sql, "JUDUL") . "'");
+                    ociexecute($avatar);
+                    while (ocifetch($avatar)) {
+                      echo '<a href="javascript:;" class="avatar avatar-xs rounded-circle" data-toggle="tooltip" ">
+                              <img src="/assets/img/' . ociresult($avatar, "GAMBAR") . '" alt="Image placeholder" class="rounded-circle">
                             </a>';
-                          }
-                        echo '</div>
+                    }
+                    echo '</div>
                       </td>
 
                     </tr>';
-                      $no++;
-                    }
+                    $no++;
+                  }
                   ?>
                 </table>
               </div>
@@ -197,27 +197,9 @@
               <div class="copyright text-center text-sm text-muted text-lg-start">
                 © <script>
                   document.write(new Date().getFullYear())
-                </script>,
-                made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
+                </script> made by
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">DanBiFa</a>
               </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
@@ -564,4 +546,5 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="./assets/js/material-dashboard.min.js?v=3.0.2"></script>
 </body>
+
 </html>

@@ -1,9 +1,10 @@
 <?php
-  include_once('koneksi.php');
+include_once('koneksi.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,12 +29,12 @@
 
 <body class="g-sidenav-show  bg-gray-200">
   <?php
-    @include 'sidenav.php';
+  @include 'sidenav.php';
   ?>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <?php
-      @include 'navbar.php';
+    @include 'navbar.php';
     ?>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
@@ -59,35 +60,35 @@
                   </thead>
                   <tbody>
                     <?php
-                      $sql = ociparse($koneksi, "select buku.judul, pengguna.nama, transaksi.tgl_pinjam, transaksi.tgl_kembali, pengguna.email from transaksi, pengguna, buku where buku.id_buku=transaksi.id_buku and pengguna.nrp=transaksi.id_anggota");
-                      ociexecute($sql);
-                      while(ocifetch($sql)){
-                        echo"<tr>
+                    $sql = ociparse($koneksi, "select buku.judul, pengguna.nama, transaksi.tgl_pinjam, transaksi.tgl_kembali, pengguna.email from transaksi, pengguna, buku where buku.id_buku=transaksi.id_buku and pengguna.nrp=transaksi.id_anggota");
+                    ociexecute($sql);
+                    while (ocifetch($sql)) {
+                      echo "<tr>
                         <td>
                           <div class='d-flex px-2 py-1'>
                             <div class='d-flex flex-column justify-content-center'>
-                              <h6 class='mb-0 text-sm'>".ociresult($sql, 'nama')."</h6>
-                              <p class='text-xs text-secondary mb-0'>".ociresult($sql, 'email')."</p>
+                              <h6 class='mb-0 text-sm'>" . ociresult($sql, 'NAMA') . "</h6>
+                              <p class='text-xs text-secondary mb-0'>" . ociresult($sql, 'EMAIL') . "</p>
                             </div>
                           </div>
                         </td>
                         <td>
-                          <p class='text-xs font-weight-bold mb-0'>".ociresult($sql, 'judul')."</p>
+                          <p class='text-xs font-weight-bold mb-0'>" . ociresult($sql, 'JUDUL') . "</p>
                         </td>
                         <td class='align-middle text-center text-sm'>
                           <span class='badge badge-sm bg-gradient-success'>Pinjam</span>
                         </td>
                         <td class='align-middle text-center'>
-                          <span class='text-secondary text-xs font-weight-bold'>".ociresult($sql, 'tgl_pinjam')."</span>
+                          <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'TGL_PINJAM') . "</span>
                         </td>
                         <td class'align-middle'>
-                          <span class='text-secondary text-xs font-weight-bold'>".ociresult($sql, 'tgl_kembali')."</span>
+                          <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'TGL_KEMBALI') . "</span>
                         </td>
                       </tr>";
-                      }
+                    }
                     ?>
-                    
-                    
+
+
                   </tbody>
                 </table>
               </div>
@@ -102,27 +103,9 @@
               <div class="copyright text-center text-sm text-muted text-lg-start">
                 © <script>
                   document.write(new Date().getFullYear())
-                </script>,
-                made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
+                </script> made by
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">DanBiFa</a>
               </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
