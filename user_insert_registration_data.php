@@ -1,46 +1,32 @@
-<?php
-    $hostname = "localhost";
-    $username = "root";
-    $password = "";
+<?php @include 'koneksi.php';
 
-    try{
-        $database = new PDO("mysql:$hostname;dbname=mysql" ,
-            $username ,
-            $password);
+$nama = $_POST['nama'];
+$nrp = $_POST['nrp'];
+$email = $_POST['email'];
+$alamat = $_POST['alamat'];
 
-        $nama = $_POST['nama'];
-        $nrp = $_POST['nrp'];
-        $email = $_POST['email'];
-        $alamat = $_POST['alamat'];
+if (isset($_POST['gambar'])) {
+    $gambar = $_POST['gambar'];
+} else {
+    $gambar = "assets/img/default.jpg";
+}
 
-        if(isset($_POST['gambar'])){
-            $gambar = $_POST['gambar'];
-        }else{
-            $gambar = "default.jpg";
-        }
+$sqlregistSyntax =
+    ociparse(
+        $koneksi,"declare begin regist('$nrp' , '$nama' , '$email' , '$alamat', '$gambar'); end;");
 
-        $insertString = "INSERT INTO perpustakaan.pengguna(id_anggota , nama , email , alamat, gambar)
-            VALUES('$nrp' , '$nama' , '$email' , '$alamat', '$gambar')";
-        
+// ambil data file
+$namaFile = $gambar;
 
-        // ambil data file
-        $namaFile = $gambar;
+// tentukan lokasi file akan dipindahkan
+$dirUpload = "assets/img/";
 
-        // tentukan lokasi file akan dipindahkan
-        $dirUpload = "assets/img/";
+// pindahkan file
+$terupload = move_uploaded_file($namaFile, $dirUpload);
 
-        // pindahkan file
-        $terupload = move_uploaded_file($namaFile, $dirUpload.$namaFile);
+if (!ociexecute($sqlregistSyntax)) {
+    echo "<p>" . oci_error($sqlregistSyntax)['message'] . "</p>";
+} else
+    header("Location: user_daftar.php");
 
-        $database->exec($insertString);
-        $database = null;
-        header("Location: user_daftar.php");
-
-    }catch(PDOException $e){
-        $messages = $e->getMessage();
-        echo "$messages<br><br>";
-        echo "Error, Kemungkinan karena NRP sudah pernah digunakan. Coba daftar dengan NRP lain!";
-    }
-    
-    exit;
-?>
+exit;
