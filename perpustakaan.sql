@@ -18,61 +18,61 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `perpustakaan`
+-- Database: perpustakaan
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `buku`
+-- Table structure for table buku
 --
 
-CREATE TABLE `buku` (
-  `id_buku` varchar(10) NOT NULL,
-  `judul` text DEFAULT NULL,
-  `penerbit` text DEFAULT NULL,
-  `pengarang` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE buku (
+  id_buku varchar(10) NOT NULL,
+  judul varchar(20) DEFAULT NULL,
+  penerbit varchar(20) DEFAULT NULL,
+  pengarang varchar(100) DEFAULT NULL
+) ;
 
 --
--- Dumping data for table `buku`
+-- Dumping data for table buku
 --
 
-INSERT INTO `buku` (`id_buku`, `judul`, `penerbit`, `pengarang`) VALUES
+INSERT INTO buku (id_buku, judul, penerbit, pengarang) VALUES
 ('K01', 'Pemrograman Web', 'Erlangga', 'Budi setianto');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Table structure for table transaksi
 --
 
-CREATE TABLE `transaksi` (
-  `id_buku` varchar(10) NOT NULL,
-  `id_anggota` text NOT NULL,
-  `tgl_pinjam` date NOT NULL,
-  `tgl_kembali` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE transaksi (
+  id_buku varchar(10) NOT NULL,
+  id_anggota varchar(10) NOT NULL,
+  tgl_pinjam date NOT NULL,
+  tgl_kembali date NOT NULL
+) ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table user
 --
 
-CREATE TABLE `user` (
-  `nrp` text NOT NULL,
-  `nama` text NOT NULL,
-  `email` text NOT NULL,
-  `alamat` text NOT NULL,
-  `password` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE pengguna (
+  nrp varchar(10) NOT NULL,
+  nama varchar(100) NOT NULL,
+  email varchar(20) NOT NULL,
+  alamat varchar(100) NOT NULL,
+  password varchar(20) DEFAULT NULL
+) ;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table user
 --
 
-INSERT INTO `user` (`nrp`, `nama`, `email`, `alamat`, `password`) VALUES
+INSERT INTO pengguna (nrp, nama, email, alamat, password) VALUES
 ('3121500001', 'Ginzales Ahmad', 'gon@gmail.com', 'Jalan jalan pokok jalan', 'apapunpasswordnya');
 
 --
@@ -80,22 +80,22 @@ INSERT INTO `user` (`nrp`, `nama`, `email`, `alamat`, `password`) VALUES
 --
 
 --
--- Indexes for table `buku`
+-- Indexes for table buku
 --
-ALTER TABLE `buku`
-  ADD PRIMARY KEY (`id_buku`);
+ALTER TABLE buku
+  ADD PRIMARY KEY (id_buku);
 
 --
--- Indexes for table `transaksi`
+-- Indexes for table transaksi
 --
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id_buku`,`id_anggota`(10));
+ALTER TABLE transaksi
+  ADD PRIMARY KEY (id_buku,id_anggota);
 
 --
--- Indexes for table `user`
+-- Indexes for table user
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`nrp`(20));
+ALTER TABLE pengguna
+  ADD PRIMARY KEY (nrp(20));
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
