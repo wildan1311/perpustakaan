@@ -18,6 +18,10 @@
           $('#tables').addClass('active');
           $('#tables').addClass('bg-gradient-primary');
           break;
+        case 'tabelBuku.php':
+          $('#tabel_buku').addClass('active');
+          $('#tabel_buku').addClass('bg-gradient-primary');
+          break;
         case 'input_Buku.php':
           $('#billing').addClass('active');
           $('#billing').addClass('bg-gradient-primary');
@@ -65,6 +69,16 @@
             <span class="nav-link-text ms-1">Tabel Peminjaman</span>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" id="tabel_buku" href="tabelBuku.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">table_view</i>
+            </div>
+            <span class="nav-link-text ms-1">Tabel Buku</span>
+          </a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link text-white" id="billing" href="input_Buku.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
