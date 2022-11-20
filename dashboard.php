@@ -70,10 +70,6 @@
                 </h4>
               </div>
             </div>
-
-
-
-
           </div>
         </div>
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">

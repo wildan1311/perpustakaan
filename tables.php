@@ -81,14 +81,12 @@ include_once('koneksi.php');
                         <td class='align-middle text-center'>
                           <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'TGL_PINJAM') . "</span>
                         </td>
-                        <td class'align-middle'>
+                        <td class='align-middle text-center'>
                           <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'TGL_KEMBALI') . "</span>
                         </td>
                       </tr>";
                     }
                     ?>
-
-
                   </tbody>
                 </table>
               </div>
