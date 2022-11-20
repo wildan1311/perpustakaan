@@ -56,11 +56,15 @@ include_once('koneksi.php');
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Pinjam</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Kembali</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
-                    $sql = ociparse($koneksi, "select buku.judul, pengguna.nama, transaksi.tgl_pinjam, transaksi.tgl_kembali, pengguna.email from transaksi, pengguna, buku where buku.id_buku=transaksi.id_buku and pengguna.nrp=transaksi.id_anggota");
+                    $sql = ociparse($koneksi, "select transaksi.*, buku.judul, pengguna.nama, pengguna.email 
+                                                from transaksi, pengguna, buku 
+                                                where buku.id_buku=transaksi.id_buku 
+                                                and pengguna.nrp=transaksi.id_anggota");
                     ociexecute($sql);
                     while (ocifetch($sql)) {
                       echo "<tr>
@@ -84,9 +88,14 @@ include_once('koneksi.php');
                         <td class='align-middle text-center'>
                           <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'TGL_KEMBALI') . "</span>
                         </td>
+                        </td>
+                        <td class='align-middle text-center'>
+                          <a href='deletePeminjaman.php?id_buku=".ociresult($sql, 'ID_BUKU')."&id_anggota=".ociresult($sql, 'ID_ANGGOTA')."' class='btn btn-danger'>Delete</a>
+                        </td>
                       </tr>";
                     }
                     ?>
+                    
                   </tbody>
                 </table>
               </div>
