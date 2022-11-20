@@ -11,7 +11,7 @@ include_once('koneksi.php');
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <title>
-    Tabel Peminjaman
+    Tabel Buku
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900%7CRoboto+Slab:400,700" />
@@ -43,7 +43,7 @@ include_once('koneksi.php');
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Tabel Peminjaman</h6>
+                <h6 class="text-white text-capitalize ps-3">Tabel Buku</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -55,6 +55,7 @@ include_once('koneksi.php');
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Penerbit</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pengarang</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -66,26 +67,22 @@ include_once('koneksi.php');
                         <td>
                           <div class='d-flex px-2 py-1'>
                             <div class='d-flex flex-column justify-content-center'>
-                              <h6 class='mb-0 text-sm'>" . ociresult($sql, 'NAMA') . "</h6>
-                              <p class='text-xs text-secondary mb-0'>" . ociresult($sql, 'EMAIL') . "</p>
+                              <h6 class='mb-0 text-sm' >" . ociresult($sql, 'ID_BUKU') . "</h6>
                             </div>
                           </div>
                         </td>
                         <td>
                           <p class='text-xs font-weight-bold mb-0'>" . ociresult($sql, 'JUDUL') . "</p>
                         </td>
-                        <td class='align-middle text-center text-sm'>
-                          <span class='badge badge-sm bg-gradient-success'>Pinjam</span>
+                        <td class='align-middle text-center'>
+                          <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'PENERBIT') . "</span>
                         </td>
                         <td class='align-middle text-center'>
-                          <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'TGL_PINJAM') . "</span>
-                        </td>
-                        <td class='align-middle text-center'>
-                          <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'TGL_KEMBALI') . "</span>
+                          <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'PENGARANG') . "</span>
                         </td>
                         </td>
                         <td class='align-middle text-center'>
-                          <a href='deletePeminjaman.php?id_buku=".ociresult($sql, 'ID_BUKU')."&id_anggota=".ociresult($sql, 'ID_ANGGOTA')."' class='btn btn-danger'>Save</a>
+                          <a href='updateBuku.php?id_buku=".ociresult($sql, 'ID_BUKU')."' class='btn btn-danger'>Update</a>
                         </td>
                       </tr>";
                     }
