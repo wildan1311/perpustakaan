@@ -63,28 +63,38 @@ include_once('koneksi.php');
                     $sql = ociparse($koneksi, "select * from perpus.buku");
                     ociexecute($sql);
                     while (ocifetch($sql)) {
-                      echo "<tr>
+                      $id_buku = ociresult($sql, 'ID_BUKU');
+                      $judul = ociresult($sql, 'JUDUL');
+                      $penerbit = ociresult($sql, 'PENERBIT');
+                      $pengarang = ociresult($sql, 'PENGARANG');
+
+
+                      echo "
+                      <form method='POST' action='updateBuku.php'>
+                      <tr>
                         <td>
                           <div class='d-flex px-2 py-1'>
                             <div class='d-flex flex-column justify-content-center'>
-                              <h6 class='mb-0 text-sm' >" . ociresult($sql, 'ID_BUKU') . "</h6>
+                              <h6 class='mb-0 text-sm' value='$id_buku'>$id_buku</h6>
+                              <input type='text' hidden value='$id_buku' name='id_buku'/>
                             </div>
                           </div>
                         </td>
                         <td>
-                          <p class='text-xs font-weight-bold mb-0'>" . ociresult($sql, 'JUDUL') . "</p>
+                          <input value='$judul' name='judul'/>
                         </td>
                         <td class='align-middle text-center'>
-                          <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'PENERBIT') . "</span>
+                          <input value='$penerbit' name='penerbit'/>
                         </td>
                         <td class='align-middle text-center'>
-                          <span class='text-secondary text-xs font-weight-bold'>" . ociresult($sql, 'PENGARANG') . "</span>
+                          <input value='$pengarang' name='pengarang'/>
                         </td>
                         </td>
                         <td class='align-middle text-center'>
-                          <a href='updateBuku.php?id_buku=".ociresult($sql, 'ID_BUKU')."' class='btn btn-danger'>Update</a>
+                            <button type='submit'>Update</button>
                         </td>
-                      </tr>";
+                      </tr>
+                      </form>";
                     }
                     ?>
                     
