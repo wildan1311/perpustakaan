@@ -81,17 +81,17 @@ include_once('koneksi.php');
                           </div>
                         </td>
                         <td>
-                          <input value='$judul' name='judul'/>
+                          <input class='form-control' value='$judul' name='judul'/>
                         </td>
                         <td class='align-middle text-center'>
-                          <input value='$penerbit' name='penerbit'/>
+                          <input class='form-control' value='$penerbit' name='penerbit'/>
                         </td>
                         <td class='align-middle text-center'>
-                          <input value='$pengarang' name='pengarang'/>
+                          <input class='form-control' value='$pengarang' name='pengarang'/>
                         </td>
                         </td>
                         <td class='align-middle text-center'>
-                            <button type='submit'>Update</button>
+                            <button class='btn btn-success' type='submit'>Update</button>
                         </td>
                       </tr>
                       </form>";
